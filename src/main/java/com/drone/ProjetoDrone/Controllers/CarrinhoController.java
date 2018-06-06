@@ -98,12 +98,24 @@ public class CarrinhoController {
                 break;
             }
         }
+        
+        List<Quantidade> quantidades = new ArrayList<>();
+        
+        for (Produto p2 : carrinho) {
+            Quantidade q = new Quantidade();
+            q.setId(p2.getIdProd());
+            q.setQuantidade(1L);
+            quantidades.add(q);
+        }
+        QuantidadeProdutos qp = new QuantidadeProdutos();
+        qp.setQuantidade(quantidades);
+        
         if (carrinho.isEmpty() || carrinho == null) {
             sessao.removeAttribute("carrinho");
         } else {
             sessao.setAttribute("carrinho", carrinho);
         }
-        return new ModelAndView("Cart").addObject("prodQtd", new Quantidade());
+         return new ModelAndView("Cart").addObject("prodQtd", qp);
     }
 
 //    @PostMapping("/update/{id}")

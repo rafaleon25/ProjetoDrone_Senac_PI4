@@ -103,6 +103,7 @@ public class VendaController {
         
         try {
             String cod = repository.incluir(venda);
+            sessao.setAttribute("cod", cod);
         } catch (Exception e) {
             return new ModelAndView("FinalizarCompraPag");
         }
