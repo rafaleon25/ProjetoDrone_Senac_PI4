@@ -65,7 +65,8 @@
                                 <h5 class="card-title" th:text="${p.nome}"><br></h5>
                                 <h5 class="card-title" th:text="${p.precos.precoFormatado}"><br></h5>
                                 <p class="card-text" style="text-overflow: ellipsis; overflow: hidden; width: 160px; height: 2.4em; white-space: nowrap;" th:text="${p.descricao}"></p>
-                                <a class="btn btn-lg m-1 btn-success" th:href="@{/produtos/{id}(id=${p.idProd})}">Ver Detalhes</a>
+                                <a class="btn btn-lg m-1 btn-success" th:if="${p.estoque} > 0" th:href="@{/produtos/{id}(id=${p.idProd})}">Ver Detalhes</a>
+                                <p th:if="${p.estoque} == 0">Produto indisponivel!</p>
                             </div>
                         </div>
                     </div>

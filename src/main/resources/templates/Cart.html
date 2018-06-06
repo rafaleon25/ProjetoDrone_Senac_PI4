@@ -81,7 +81,7 @@
                                     <p class="lead m-2">Frete:  </p>
                                     <p class="lead m-2">TOTAL: </p>
                                     <button class="btn text-light btn-success btn-lg" type="submit" th:if="${session.usuario != null}">Comprar</button>
-                                    <button class="btn-success btn-lg mb-2 " type="submit" th:if="${session.usuario == null}" data-toggle="modal" data-target="#modalLogin">Comprar</button>
+                                    <a class="btn-success btn-lg mb-2 " type="submit" th:if="${session.usuario == null}" th:href="@{/login/telaLogin}" >Comprar</a>
                                 </div>
                             </div>
                         </div>
