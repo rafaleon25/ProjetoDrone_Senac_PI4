@@ -44,7 +44,6 @@
                             <input type="hidden" th:field="*{quantidade[__${rowStat.index}__].id}" />
                             <input id="inp" class="btn-light col-md-3 rounded btn-md"  th:field="*{quantidade[__${rowStat.index}__].quantidade}" th:type="number" >
                             <input type="hidden" th:value="${c.estoque}">
-                            <button id="qtdBtnPlus" th:type="submit" class="btn btn-dark text-left btn-lg" onclick="pegarQtd()">Atualizar Quantidade</button>
                             <p><span  style="display: none" th:text="${c.precos.precoFormatado}"></span></p>
                         </div>
                     </div>
@@ -81,7 +80,7 @@
                                     <p class="lead m-2">SubTotal: </p>
                                     <p class="lead m-2">Frete:  </p>
                                     <p class="lead m-2">TOTAL: </p>
-                                    <button class="btn btn-success btn-lg" type="submit" th:if="${session.usuario != null}">Comprar</button>
+                                    <button class="btn text-light btn-success btn-lg" type="submit" th:if="${session.usuario != null}">Comprar</button>
                                     <a class="btn btn-success btn-lg" type="submit" th:if="${session.usuario == null}" data-toggle="modal" data-target="#modalLogin">Comprar</a>
                                 </div>
                             </div>
