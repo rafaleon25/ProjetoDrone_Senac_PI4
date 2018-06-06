@@ -39,7 +39,7 @@
                             <p class="lead" th:text="${c.precos.precoFormatado}">Por: R$2.200,00
                                 <br>ou, à vista : R$ 1.980,00
                             </p>
-                            <button class="btn-lg btn-danger " th:href="@{/carrinho/remover/{id}(id=${c.idProd})}" type="submit">Remover do Carrinho</button>
+                            <a class="btn-lg btn-danger " th:href="@{/carrinho/remover/{id}(id=${c.idProd})}" type="submit">Remover do Carrinho</a>
                             <br>
                             <input type="hidden" th:field="*{quantidade[__${rowStat.index}__].id}" />
                             <input id="inp" class="btn-light col-md-3 rounded btn-md"  th:field="*{quantidade[__${rowStat.index}__].quantidade}" th:type="number" >
