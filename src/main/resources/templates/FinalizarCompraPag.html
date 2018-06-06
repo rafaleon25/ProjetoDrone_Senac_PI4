@@ -22,8 +22,8 @@
         <form th:action="@{/venda/finalizar}" th:object="${VendaPag}" method="post">
             <div class=" col-md-12">
                 <div class="container">
-                    <div class="row">
-                        <div class=" card col-md-3">
+                    <div class="row p-3">
+                        <div class="col-md-3">
                         </div>
                         <div class=" card col-md-6 ">
                             <label for="NumeroCartao" >Numero do Cartão: </label>
@@ -41,7 +41,7 @@
                             <label for="parcelas" >Parcelas</label>
                             <input id="parcelas" th:field="*{parcelas}" class="form-control" >
                             <p class="text-danger" th:if="${#fields.hasErrors('parcelas')}" th:errors="*{parcelas}">parcelas incorreto</p>
-                            <select id="formaPag" class="form-control mt-2" th:field="*{formaPagamento}">
+                            <select id="formaPag" class="form-control mt-2 mb-3" th:field="*{formaPagamento}">
                                 <option value="MC">MC</option>
                                 <option value="VI">VI</option>
                                 <option value="HE">HE</option>
@@ -49,21 +49,21 @@
                             </select>
                             <p class="text-danger" th:if="${#fields.hasErrors('formaPagamento')}" th:errors="*{formaPagamento}">formaPagamento incorreto</p>
                         </div>
-                        <div class=" card col-md-3">
+                        <div class="col-md-3">
 
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class=" col-md-3" >
-                    <button >Voltar</button>
+            <div class="row mb-3 mt-3">
+                <div class="col-md-3" >
+                    <button class="btn-danger  form-control" >Voltar</button>
                 </div>
                 <div class=" col-md-6" >
 
                 </div>
-                <div class=" col-md-3" >
-                    <button type="submit">Finalizar compra</button>
+                <div class="col-md-3" >
+                    <button class="btn-success form-control" type="submit">Finalizar compra</button>
                 </div>
             </div>
         </form>
