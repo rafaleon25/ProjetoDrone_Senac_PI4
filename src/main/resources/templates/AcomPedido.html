@@ -41,13 +41,13 @@
           <div class="container" th:each="a :${session.listaAcomp}">
             <div class="row">
                 <div>
-                    <h1>Pedido</h1>
-                    <p th:text="${a.dataVenda}"></p>
-                    <p th:text="${a.codigoCompra}"></p>
-                    <p th:text="${a.nome}"></p>
-                    <p th:text="${a.qtd}"></p>
-                    <p th:text="${a.forma_pagamento}"></p>
-                    <p th:text="${a.statusPedido}"></p>
+                    <h2>Pedido</h1>
+                    <p th:text="'Data do Pedido: ' + ${a.dataVenda}"></p>
+                    <p th:text="'Código da Compra: ' + ${a.codigoCompra}"></p>
+                    <p th:text="'Produto: ' + ${a.nome}"></p>
+                    <p th:text="'Quantidade: ' + ${a.qtd}"></p>
+                    <p th:text="'Forma de Pagamento: ' + ${a.forma_pagamento}"></p>
+                    <p th:text="'Status: ' + ${a.statusPedido}"></p>
                 </div>
             </div>
          </div>
