@@ -6,19 +6,11 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
         <link rel="stylesheet" th:href="@{/theme.css}" type="text/css"/>
         <script type="text/javascript">
-            function pegarQtd() {
-                let qtd;
-                let id;
-                qtd = document.getElementById("qtdUsu").value;
-                id = document.getElementById("ProdId").value;
-                for (var i = 0; i < id.length; i++) {
-                    if (id[i] === document.getElementById("ProdId").value) {
-                        document.getElementById("inp").value = qtd;
-                    }
-                }
-
+            function maisQtd() {
+                document.getElementById("inp").value=Number(document.getElementById("inp").value)+1;
             }
-            
+                
+
         </script>
     </head>
     <body>
@@ -42,8 +34,15 @@
                             <a class="btn-lg btn-danger " th:href="@{/carrinho/remover/{id}(id=${c.idProd})}" type="submit">Remover do Carrinho</a>
                             <br>
                             <input type="hidden" th:field="*{quantidade[__${rowStat.index}__].id}" />
+                            
+                            <input type="hidden" disabled id="qtdAdd">
+                            
+                            
+                            <input id="ProdId" type="hidden" th:text="${c.idProd}" disabled>
+                            <button class="menos" type="button" >-</button>
                             <input id="inp" class="btn-light col-md-3 rounded btn-md"  th:field="*{quantidade[__${rowStat.index}__].quantidade}" th:type="number" >
-                            <input type="hidden" th:value="${c.estoque}">
+                            <button class="mais" type="button" onclick="maisQtd()">+</button>
+                            
                             <p><span  style="display: none" th:text="${c.precos.precoFormatado}"></span></p>
                         </div>
                     </div>

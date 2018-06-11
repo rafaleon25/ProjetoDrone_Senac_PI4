@@ -7,7 +7,6 @@ package com.drone.ProjetoDrone.Controllers;
 
 import com.drone.ProjetoDrone.Classes.Cliente.Cliente;
 import com.drone.ProjetoDrone.Classes.Venda.Acompanhamento;
-import com.drone.ProjetoDrone.Classes.Venda.Venda;
 import com.drone.ProjetoDrone.Repository.AcompanhaRepository;
 import java.util.ArrayList;
 import java.util.List;
