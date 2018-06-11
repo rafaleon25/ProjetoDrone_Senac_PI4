@@ -7,7 +7,6 @@ package com.drone.ProjetoDrone.Classes.Produto;
 
 import com.drone.ProjetoDrone.Classes.Venda.VendaProd;
 import java.io.Serializable;
-import java.text.NumberFormat;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;

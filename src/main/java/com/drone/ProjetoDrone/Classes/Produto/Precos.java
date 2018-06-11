@@ -51,6 +51,12 @@ public class Precos implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "dt_criacao")
     private Date dataCriacao = new Date();
+    
+    @Column(name = "desconto")
+    private double desconto;
+    
+    @Column(name = "desconto_ativo")
+    private boolean desconto_ativo;
 
 //    Funcionario func;
 //
@@ -120,6 +126,38 @@ public class Precos implements Serializable {
 
     public Date getDataCriacao() {
         return dataCriacao;
+    }
+
+    public Set<Produto> getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Set<Produto> produto) {
+        this.produto = produto;
+    }
+
+    public int getIdPreco() {
+        return IdPreco;
+    }
+
+    public void setIdPreco(int IdPreco) {
+        this.IdPreco = IdPreco;
+    }
+
+    public double getDesconto() {
+        return desconto;
+    }
+
+    public void setDesconto(double desconto) {
+        this.desconto = desconto;
+    }
+
+    public boolean isDesconto_ativo() {
+        return desconto_ativo;
+    }
+
+    public void setDesconto_ativo(boolean desconto_ativo) {
+        this.desconto_ativo = desconto_ativo;
     }
 
 }
