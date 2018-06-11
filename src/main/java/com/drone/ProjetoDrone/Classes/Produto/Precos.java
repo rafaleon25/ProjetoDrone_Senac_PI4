@@ -22,7 +22,6 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import java.text.NumberFormat;
-import javax.persistence.Transient;
 
 /**
  *
@@ -53,10 +52,10 @@ public class Precos implements Serializable {
     private Date dataCriacao = new Date();
     
     @Column(name = "desconto")
-    private double desconto;
+    private Double desconto;
     
     @Column(name = "desconto_ativo")
-    private boolean desconto_ativo;
+    private Boolean desconto_ativo;
 
 //    Funcionario func;
 //
@@ -73,6 +72,7 @@ public class Precos implements Serializable {
 
     //-------------------------Construtor-----------------------
     public Precos() {
+    
     }
 
     public Precos(double preco) {
