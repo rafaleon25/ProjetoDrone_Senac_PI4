@@ -28,11 +28,11 @@
                         <div class="col-md-5 ">
                             <h1 class="" th:text="${c.nome}"><b>Drone Super Hiper Legal Mesmo</b></h1>
                         </div>
-                        <div class="col-md-4" >
-                            <p class="lead" th:text="${c.precos.precoFormatado}">Por: R$2.200,00
+                        <div class="col-md-4">
+                            <p class="lead"  th:text="${c.precos.precoFormatado}">Por: R$2.200,00
                                 <br>ou, à vista : R$ 1.980,00
                             </p>
-                            <a class="btn-lg btn-danger " th:href="@{/carrinho/remover/{id}(id=${c.idProd})}" type="submit">Remover do Carrinho</a>
+                            <a class="btn-lg btn-danger mb-2" th:href="@{/carrinho/remover/{id}(id=${c.idProd})}" type="submit">Remover do Carrinho</a>
                             <br>
                             <input type="hidden" th:field="*{quantidade[__${rowStat.index}__].id}" />
                             
@@ -40,9 +40,9 @@
                             
                             
                             <input id="ProdId" type="hidden" th:text="${c.idProd}" disabled>
-                            <button class="menos" type="button" >-</button>
-                            <input th:id="${c.idProd}" class="btn-light col-md-3 rounded btn-md"  th:field="*{quantidade[__${rowStat.index}__].quantidade}" th:type="number" >
-                            <button class="mais" type="button" th:onclick="'maisQtd(\'' + ${c.idProd} + '\');'">+</button>
+                            <button class="btn menos btn-light" type="button" >-</button>
+                            <input th:id="${c.idProd}" class="form-control col-sm-2" style="display:inline;" th:field="*{quantidade[__${rowStat.index}__].quantidade}" th:type="number" >
+                            <button class="btn mais btn-light" type="button" th:onclick="'maisQtd(\'' + ${c.idProd} + '\');'">+</button>
                             
                             <p><span  style="display: none" th:text="${c.precos.precoFormatado}"></span></p>
                         </div>
