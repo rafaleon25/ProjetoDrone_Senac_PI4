@@ -151,9 +151,18 @@ public class VendaController {
 //                }
 //            }
         }
+        
+        
+        VendaEndereco ven = new VendaEndereco();
+        ven.setCep(cli.getCep());
+        ven.setCidade(cli.getCidade());
+        ven.setEstado(cli.getEstado());
+        ven.setNumero(cli.getNumero());
+        ven.setRua(cli.getRua());
+        
         venda.setTotalVenda(total);
         sessao.setAttribute("venda", venda);
-        return new ModelAndView("FinalizarCompraEnd").addObject("vendaEndereco", new VendaEndereco());
+        return new ModelAndView("FinalizarCompraEnd").addObject("vendaEndereco",  ven);
     }
 
     @PostMapping("/vendaEnd")
@@ -173,7 +182,11 @@ public class VendaController {
             return new ModelAndView("FinalizarCompraEnd");
         }
         sessao.setAttribute("venda", venda);
-
+        
+        
+        
+        
+        
         return new ModelAndView("FinalizarCompraPag").addObject("VendaPag", new VendaPag());
     }
 }

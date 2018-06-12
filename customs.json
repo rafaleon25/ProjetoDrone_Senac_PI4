@@ -22,6 +22,9 @@
         "th:fragment": {
             "context": "div"
         },
+        "th:inline": {
+            "context": "script"
+        },
         "th:if": {
             "context": "div"
         },
