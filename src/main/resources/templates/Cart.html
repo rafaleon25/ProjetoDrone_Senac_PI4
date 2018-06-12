@@ -11,6 +11,12 @@
                 document.getElementById(id).value = Number(document.getElementById(id).value) + 1;
             }
 
+            function menosQtd(id) {
+                if (document.getElementById(id).value != 1) {
+                    document.getElementById(id).value = Number(document.getElementById(id).value) - 1;
+                }
+            }
+
         </script>
     </head>
     <body>
@@ -39,8 +45,8 @@
 
 
                             <input id="ProdId" type="hidden" value="${c.idProd}" disabled>
-                            <button class="btn menos btn-light" type="button" >-</button>
-                            <input th:id="${c.idProd}" class="form-control col-sm-2" style="display:inline;" th:field="*{quantidade[__${rowStat.index}__].quantidade}" th:type="number" >
+                            <button class="btn menos btn-light" type="button" th:onclick="'menosQtd(\'' + ${c.idProd} + '\');'" >-</button>
+                            <input th:id="${c.idProd}" class="form-control col-sm-2" style="display:inline;" th:field="*{quantidade[__${rowStat.index}__].quantidade}" th:type="number" disabled>
                             <button class="btn mais btn-light" type="button" th:onclick="'maisQtd(\'' + ${c.idProd} + '\');'">+</button>
 
                             <p><span  style="display: none" th:text="${c.precos.precoFormatado}"></span></p>
