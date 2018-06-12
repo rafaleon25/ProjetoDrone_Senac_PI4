@@ -6,8 +6,9 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
         <link rel="stylesheet" th:href="@{/theme.css}" type="text/css"/>
         <script type="text/javascript">
-            function maisQtd() {
-                document.getElementById("inp").value=Number(document.getElementById("inp").value)+1;
+            function maisQtd(id) {
+            
+                document.getElementById(id).value=Number(document.getElementById(id).value)+1;
             }
                 
 
@@ -40,8 +41,8 @@
                             
                             <input id="ProdId" type="hidden" th:text="${c.idProd}" disabled>
                             <button class="menos" type="button" >-</button>
-                            <input id="inp" class="btn-light col-md-3 rounded btn-md"  th:field="*{quantidade[__${rowStat.index}__].quantidade}" th:type="number" >
-                            <button class="mais" type="button" onclick="maisQtd()">+</button>
+                            <input th:id="${c.idProd}" class="btn-light col-md-3 rounded btn-md"  th:field="*{quantidade[__${rowStat.index}__].quantidade}" th:type="number" >
+                            <button class="mais" type="button" th:onclick="'maisQtd(\'' + ${c.idProd} + '\');'">+</button>
                             
                             <p><span  style="display: none" th:text="${c.precos.precoFormatado}"></span></p>
                         </div>
