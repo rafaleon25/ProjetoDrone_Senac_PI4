@@ -7,10 +7,9 @@
         <link rel="stylesheet" th:href="@{/theme.css}" type="text/css"/>
         <script type="text/javascript">
             function maisQtd(id) {
-            
-                document.getElementById(id).value=Number(document.getElementById(id).value)+1;
+
+                document.getElementById(id).value = Number(document.getElementById(id).value) + 1;
             }
-                
 
         </script>
     </head>
@@ -35,15 +34,15 @@
                             <a class="btn-lg btn-danger mb-2" th:href="@{/carrinho/remover/{id}(id=${c.idProd})}" type="submit">Remover do Carrinho</a>
                             <br>
                             <input type="hidden" th:field="*{quantidade[__${rowStat.index}__].id}" />
-                            
+
                             <input type="hidden" disabled id="qtdAdd">
-                            
-                            
-                            <input id="ProdId" type="hidden" th:text="${c.idProd}" disabled>
+
+
+                            <input id="ProdId" type="hidden" value="${c.idProd}" disabled>
                             <button class="btn menos btn-light" type="button" >-</button>
                             <input th:id="${c.idProd}" class="form-control col-sm-2" style="display:inline;" th:field="*{quantidade[__${rowStat.index}__].quantidade}" th:type="number" >
                             <button class="btn mais btn-light" type="button" th:onclick="'maisQtd(\'' + ${c.idProd} + '\');'">+</button>
-                            
+
                             <p><span  style="display: none" th:text="${c.precos.precoFormatado}"></span></p>
                         </div>
                     </div>
@@ -52,36 +51,14 @@
             <!-- Frete e total COMEÇO-->    
             <div class="py-3" th:if="${session.carrinho} != null">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="card-body">
-                                <h5 class="">Calcular Frete:</h5>
-                                <input class="form-control mr-2" type="text" placeholder="CEP"> 
-                            </div>
-                            <div class="col-md-12">
-                                <div class="col-md-12  ">
-                                    <div class="card">
-                                        <div class="form-check m-1">
-                                            <input class="form-check-input" name="group100" type="radio" id="radio100" value="on"> <label class="form-check-label" for="radio100">Sedex - 3 dias</label> 
-                                        </div>
-                                        <div class="form-check m-1">
-                                            <input class="form-check-input" name="group100" type="radio" id="radio101" checked="" value="on"> <label class="form-check-label" for="radio101">Pac - 7 dias</label> 
-                                        </div>
-                                        <div class="form-check m-1">
-                                            <input class="form-check-input" name="group100" type="radio" id="radio102" value="on"> <label class="form-check-label" for="radio102">Padrão - 14 dias</label> 
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
+                    <div class="row" style="margin-left: 55%;">
+                        <div class="col-md-12">
                             <div class="col-md-12">
                                 <div class="card">
-                                    <p class="lead m-2">SubTotal: </p>
-                                    <p class="lead m-2">Frete:  </p>
-                                    <p class="lead m-2">TOTAL: </p>
-                                    <button class="btn text-light btn-success btn-lg" type="submit" th:if="${session.usuario != null}">Comprar</button>
-                                    <a class="btn-success btn-lg mb-2 " type="submit" th:if="${session.usuario == null}" th:href="@{/login/telaLogin}" >Comprar</a>
+                                    <p class="lead m-2">Total: </p>
+
+                                    <button class="btn btn-success m-2" type="submit" th:if="${session.usuario != null}">Comprar</button>
+                                    <a class="btn btn-success m-2" type="submit" th:if="${session.usuario == null}" th:href="@{/login/telaLogin}" >Comprar</a>
                                 </div>
                             </div>
                         </div>

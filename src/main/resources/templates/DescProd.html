@@ -81,14 +81,7 @@
                                 
                                 <button class="form-control btn-light mt-2 col-md-5" onclick="reqCorreios()">Calcular Frete</button>
                             </div>
-                            <div class="form-check ml-3">
-                                <input class="form-check-input" name="group100" type="radio" id="radio100" value="on">
-                                <label class="form-check-label" id="valorFreteNorm" for="radio100">
-                                </label><br>
-                                <input class="form-check-input" name="group100" type="radio" id="radio101" checked="" value="on">
-                                <label class="form-check-label" id="valorFretePac" for="radio101">
-                                </label> 
-                            </div>
+
                             <form method="post" th:action="@{/carrinho/{id}(id=${produto.idProd})}">
                                 <button class="btn btn-success py-2 ml-3 mt-2 btn-lg" type="submit">Adicionar ao Carrinho</button>
                             </form>

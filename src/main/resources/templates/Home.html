@@ -1,83 +1,87 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-      <link rel="stylesheet" th:href="@{/theme.css}" type="text/css"/>
-   </head>
-   <body>
-      <div th:replace="Master :: nav ">
-      </div>
-      <!-- Cover -->
-      <div class="d-flex align-items-center py-5 cover" style=" background-position: center; sbackground-size: cover; background-repeat: no-repeat; background-image: url(http://thecrux.com/wp-content/uploads/2016/06/dog-drone.jpg);">
-         <div class="container">
-            <div class="row">
-               <div class="col-lg-12 text-white mt-5">
-                  <h1 class="display-4 d-block ">Drones Store</h1>
-                  <a th:href="@{/produtos/telaProdutos}" class="btn btn-lg mt-4 btn-outline-light">Comprar Agora!</a><i class="d-block fa fa-angle-down pt-5 fa-3x"></i> 
-               </div>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+        <link rel="stylesheet" th:href="@{/theme.css}" type="text/css"/>
+    </head>
+    <body>
+        <div th:replace="Master :: nav ">
+        </div>
+        <!-- Cover -->
+        <div class="d-flex align-items-center py-5 cover" style=" background-position: center; sbackground-size: cover; background-repeat: no-repeat; background-image: url(http://thecrux.com/wp-content/uploads/2016/06/dog-drone.jpg);">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-white mt-5">
+                        <h1 class="display-4 d-block ">Drones Store</h1>
+                        <a th:href="@{/produtos/telaProdutos}" class="btn btn-lg mt-4 btn-outline-light">Comprar Agora!</a><i class="d-block fa fa-angle-down pt-5 fa-3x"></i> 
+                    </div>
+                </div>
             </div>
-         </div>
-      </div>
-      <!-- icon Balls -->
-      <div class="py-5 bg-light" id="drones">
-         <div class="container-fluid">
-            <div class="row">
-               <div class="col-md-12">
-                  <h1>Drones</h1>
-               </div>
+        </div>
+        <!-- icon Balls -->
+        <div class="py-5 bg-light" id="drones">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>Drones</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 text-center text-muted col-lg-4 "  >
+                        <img src="https://www.buzzdrones.com.au/wp-content/uploads/2017/07/Mavic-Pro-Drone-3-1-500x500.jpg" class="center-block img-fluid my-3 rounded-circle" >
+                        <h3 class="mb-0"><b>Mavic Pro</b></h3>
+                    </div>
+                    <div class="col-4 text-center text-muted col-lg-4">
+                        <img src="https://4.imimg.com/data4/XT/WG/ANDROID-9323785/product-500x500.jpeg" class="center-block img-fluid my-3 rounded-circle">
+                        <h3 class="mb-0"><b>Phantom 4k</b></h3>
+                    </div>
+                    <div class="col-4 text-center text-muted col-lg-4 " >
+                        <img src="http://www.droneomega.com/wp-content/uploads/2017/09/B073RCQZ14.jpg" class="center-block img-fluid my-3 rounded-circle">
+                        <h3 class="mb-0"><b>MXJ B2W</b></h3>
+                    </div>
+                </div>
             </div>
-            <div class="row">
-               <div class="col-4 text-center text-muted col-lg-4 "  >
-                     <img src="https://www.buzzdrones.com.au/wp-content/uploads/2017/07/Mavic-Pro-Drone-3-1-500x500.jpg" class="center-block img-fluid my-3 rounded-circle" >
-                     <h3 class="mb-0"><b>Mavic Pro</b></h3>
-               </div>
-               <div class="col-4 text-center text-muted col-lg-4">
-                     <img src="https://4.imimg.com/data4/XT/WG/ANDROID-9323785/product-500x500.jpeg" class="center-block img-fluid my-3 rounded-circle">
-                     <h3 class="mb-0"><b>Phantom 4k</b></h3>
-               </div>
-               <div class="col-4 text-center text-muted col-lg-4 " >
-                     <img src="http://www.droneomega.com/wp-content/uploads/2017/09/B073RCQZ14.jpg" class="center-block img-fluid my-3 rounded-circle">
-                     <h3 class="mb-0"><b>MXJ B2W</b></h3>
-               </div>
+        </div>
+
+        <!-- Parallax section -->
+        <div class="py-5 section-parallax" style=" background-attachment: fixed; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url(https://visitgreenland.com/wp-content/uploads/2017/09/aningaaq-_-drone3-e1505397720880-1500x630.jpg);">
+            <div class="container my-5 bg-light p-4">
+                <div class="row mx-auto">
+                    <div class="col-md-12">
+                        <h1 class="mb-3">Sobre drones</h1>
+                        <p class="">
+                            Veículo aéreo não tripulado (VANT) ou drone, é todo e qualquer tipo de aeronave que 
+                            pode ser controlada nos 3 eixos e que não necessite de pilotos embarcados para ser guiada(DECEA, 2010).
+                            Estes tipos de aeronaves são controladas à distância por meios eletrônicos e computacionais, 
+                            sob a supervisão de humanos, ou mesmo sem a sua intervenção, por meio de Controladores Lógicos Programáveis (CLP).
+                        </p>
+                        <a th:href="@{/produtos/telaProdutos}" class="btn btn-outline-dark btn-lg m-2">Compre agora</a>
+                    </div>
+                </div>
             </div>
-         </div>
-      </div>
-      
-      <!-- Parallax section -->
-      <div class="py-5 section-parallax" style=" background-attachment: fixed; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url(https://visitgreenland.com/wp-content/uploads/2017/09/aningaaq-_-drone3-e1505397720880-1500x630.jpg);">
-         <div class="container my-5 bg-light p-4">
-            <div class="row mx-auto">
-               <div class="col-md-12">
-                  <h1 class="mb-3">Sobre drones</h1>
-                  <p class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit in purus id malesuada. Praesent semper vel tellus in placerat. Proin eget viverra arcu. Nunc molestie odio non nulla finibus lacinia. Sed eget tincidunt lorem, nec placerat est. Suspendisse imperdiet, nisl nec dignissim hendrerit, magna ex viverra urna, ut convallis lacus eros ut ipsum. Maecenas molestie ex et ex facilisis, vel gravida metus sagittis. Nunc finibus sem in massa bibendum egestas..</p>
-                  <a th:href="@{/produtos/telaProdutos}" class="btn btn-outline-dark btn-lg m-2">Compre agora</a>
-                  <a class="btn btn-light btn-lg m-2" th:href="@{/cadastrar/cliente/cadastro}">Cadastre-se</a>
-               </div>
+        </div>
+
+        <!-- cover 2 -->
+        <div class="d-flex align-items-center py-4 cover" style="background-size: cover; background-image: url(https://www.wetalkuav.com/wp-content/uploads/2018/02/thumb-39-drones-2.jpg);">
+        </div>
+        <!-- Last text -->
+        <div class="py-5 bg-dark" id="register">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 text-md-left text-center">
+                        <h1 class="text-white">Registros estão abertos</h1>
+                        <p>Drones Store - A Melhor loja de drones do Brasil! A Drones Store possui a maior variedade de drones do mercado brasileiro! Todos os nossos produtos tem Nota fiscal e garantia de 1 ano! </p>
+                    </div>
+                    <div class="col-md-4 align-self-center animate-in-right" th:if="${session.usuario == null}">
+                        <a th:href="@{/cadastrar/cliente/cadastro}" class="btn btn-lg btn-light my-3">Registrar agora!</a>
+                    </div>
+                </div>
             </div>
-         </div>
-      </div>
-      
-      <!-- cover 2 -->
-      <div class="d-flex align-items-center py-4 cover" style="background-size: cover; background-image: url(https://www.wetalkuav.com/wp-content/uploads/2018/02/thumb-39-drones-2.jpg);">
-      </div>
-      <!-- Last text -->
-      <div class="py-5 bg-dark" id="register">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-8 text-md-left text-center">
-                  <h1 class="text-white">Registros estão abertos</h1>
-                  <p>Drones Store - A Melhor loja de drones do Brasil! A Drones Store possui a maior variedade de drones do mercado brasileiro! Todos os nossos produtos tem Nota fiscal e garantia de 1 ano! </p>
-               </div>
-               <div class="col-md-4 align-self-center animate-in-right">
-                  <a th:href="@{/cadastrar/cliente/cadastro}" class="btn btn-lg btn-light my-3">Registrar agora!</a>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- CONTENT END OF REFERENCE -->
-      <div th:replace="master :: footer">
-      </div>
-   </body>
+        </div>
+        <!-- CONTENT END OF REFERENCE -->
+        <div th:replace="master :: footer">
+        </div>
+    </body>
 </html>
