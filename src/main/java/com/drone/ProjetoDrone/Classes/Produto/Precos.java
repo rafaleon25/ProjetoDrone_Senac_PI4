@@ -68,14 +68,14 @@ public class Precos implements Serializable {
 //    private int AlteradoPor = func.getIdFunc();
     @Digits(integer = 6, fraction = 2)
     @Column(name = "preco", precision = 6, scale = 2, nullable = false)
-    private double preco;
+    private float preco;
 
     //-------------------------Construtor-----------------------
     public Precos() {
     
     }
 
-    public Precos(double preco) {
+    public Precos(float preco) {
         this.preco = preco;
     }
 
@@ -108,7 +108,7 @@ public class Precos implements Serializable {
         return dataAlteracao;
     }
 
-    public double getPreco() {
+    public float getPreco() {
         return preco;
     }
 
@@ -119,7 +119,7 @@ public class Precos implements Serializable {
         return precoFormatado;
     }
 
-    public void setPreco(double preco) {
+    public void setPreco(float preco) {
         this.preco = preco;
 
     }

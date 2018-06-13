@@ -7,14 +7,47 @@
         <link rel="stylesheet" th:href="@{/theme.css}" type="text/css"/>
         <script type="text/javascript">
             function maisQtd(id) {
-
-                document.getElementById(id).value = Number(document.getElementById(id).value) + 1;
+            document.getElementById(id).value = Number(document.getElementById(id).value) + 1;
+            
+            var id2 = parseInt(id) + 1;
+            var atual = parseFloat(document.getElementById(id2).innerText);
+            atual += parseFloat(atual);
+            document.getElementById(id2).innerText = atual;
+            calculaTotal();
             }
 
             function menosQtd(id) {
-                if (document.getElementById(id).value != 1) {
-                    document.getElementById(id).value = Number(document.getElementById(id).value) - 1;
-                }
+            if (document.getElementById(id).value != 1) {
+            document.getElementById(id).value = Number(document.getElementById(id).value) - 1;
+            }
+            }
+
+            window.onload = function(){ 
+            var element = document.getElementById("total");
+
+            var count = document.getElementsByClassName('lead prodObj');
+            if (count.length > 0) {
+            var total = 0;
+            for(var i = 0; i < count.length; i++)
+            {
+            total += parseFloat(count[i].innerText);
+            }
+            element.innerHTML = 'R$' + total;
+            }
+            }
+            
+            function calculaTotal(){
+            var element = document.getElementById("total");
+
+            var count = document.getElementsByClassName('lead prodObj');
+            if (count.length > 0) {
+            var total = 0;
+            for(var i = 0; i < count.length; i++)
+            {
+            total += parseFloat(count[i].innerText);
+            }
+            element.innerHTML = 'R$' + total;
+            }
             }
 
         </script>
@@ -33,8 +66,8 @@
                         <div class="col-md-5 ">
                             <h1 class="" th:text="${c.nome}"><b>Drone Super Hiper Legal Mesmo</b></h1>
                         </div>
-                        <div class="col-md-4">
-                            <p class="lead"  th:text="${c.precos.precoFormatado}">Por: R$2.200,00
+                        <div id="div1" class="col-md-4">
+                            <p th:type="number" class="lead prodObj" th:id="${c.idProd} + 1" th:text="${#numbers.formatDecimal(c.precos.preco, 0, 'POINT', 2, 'COMMA')}">Por: R$2.200,00
                                 <br>ou, à vista : R$ 1.980,00
                             </p>
                             <a class="btn-lg btn-danger mb-2" th:href="@{/carrinho/remover/{id}(id=${c.idProd})}" type="submit">Remover do Carrinho</a>
@@ -49,7 +82,7 @@
                             <input th:id="${c.idProd}" class="form-control col-sm-2" style="display:inline;" th:field="*{quantidade[__${rowStat.index}__].quantidade}" th:type="number" readonly="true">
                             <button class="btn mais btn-light" type="button" th:onclick="'maisQtd(\'' + ${c.idProd} + '\');'">+</button>
 
-                            <p><span  style="display: none" th:text="${c.precos.precoFormatado}"></span></p>
+                            <p><span id="teste" style="display: none" th:text="${c.precos.precoFormatado}"></span></p>
                         </div>
                     </div>
                 </div>
@@ -61,8 +94,8 @@
                         <div class="col-md-12">
                             <div class="col-md-12">
                                 <div class="card">
-                                    <p class="lead m-2">Total: </p>
-                                    
+                                    <p id="total" class="lead m-2">Total: </p>
+
                                     <p th:text="${session.erroQtd}"></p>
 
                                     <button class="btn btn-success m-2" type="submit" th:if="${session.usuario != null}">Comprar</button>
