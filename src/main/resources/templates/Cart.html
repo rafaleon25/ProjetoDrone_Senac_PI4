@@ -7,9 +7,9 @@
         <link rel="stylesheet" th:href="@{/theme.css}" type="text/css"/>
         <script type="text/javascript">
             function maisQtd(id) {
-            document.getElementById(id).value = Number(document.getElementById(id).value) + 1;
-
             var id2 = parseInt(id) + 1;
+            var id = parseInt(id) * 2;
+            document.getElementById(id).value = Number(document.getElementById(id).value) + 1;
 
             var atual = parseFloat(document.getElementById(id2).innerText);
             atual += atual;
@@ -85,7 +85,7 @@
 
                             <input id="ProdId" type="hidden" value="${c.idProd}" disabled>
                             <button class="btn menos btn-light" type="button" th:onclick="'menosQtd(\'' + ${c.idProd} + '\');'" >-</button>
-                            <input th:id="${c.idProd}" class="form-control col-sm-2" style="display:inline;" th:field="*{quantidade[__${rowStat.index}__].quantidade}" th:type="number" readonly="true">
+                            <input th:id="${c.idProd} * 2" class="form-control col-sm-2" style="display:inline;" th:field="*{quantidade[__${rowStat.index}__].quantidade}" th:type="number" readonly="true">
                             <button class="btn mais btn-light" type="button" th:onclick="'maisQtd(\'' + ${c.idProd} + '\');'">+</button>
 
                             <p><span id="teste" style="display: none" th:text="${c.precos.precoFormatado}"></span></p>
