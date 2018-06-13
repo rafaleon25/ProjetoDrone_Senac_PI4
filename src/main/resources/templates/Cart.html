@@ -18,8 +18,18 @@
             }
 
             function menosQtd(id) {
+            var id2 = parseInt(id) + 1;
+            var id = parseInt(id) * 2;
+            
             if (document.getElementById(id).value != 1) {
+            var qtd = document.getElementById(id).value;
             document.getElementById(id).value = Number(document.getElementById(id).value) - 1;
+            
+            var atual = parseFloat(document.getElementById(id2).innerText);
+            var original = atual / qtd;
+            atual = atual - original;
+            document.getElementById(id2).innerText = atual;
+            calculaTotal();
             }
             }
 
