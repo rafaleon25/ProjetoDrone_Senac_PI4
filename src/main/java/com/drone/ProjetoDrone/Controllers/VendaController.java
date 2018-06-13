@@ -100,7 +100,7 @@ public class VendaController {
         venda.setNumeroCartao(VendaPag.getNumeroCartao());
         venda.setParcelas(VendaPag.getParcelas());
         venda.setValidadeCartao(VendaPag.getValidadeCartao());
-        
+
         try {
             String cod = repository.incluir(venda);
             sessao.setAttribute("cod", cod);
@@ -122,7 +122,7 @@ public class VendaController {
         venda.setCliente(cli);
 
         List<Produto> carrinho = (List<Produto>) sessao.getAttribute("carrinho");
-        QuantidadeProdutos quantidadesProd = prodQtd;
+//        QuantidadeProdutos quantidadesProd = prodQtd;
         List<Quantidade> quantidades = prodQtd.getQuantidade();
 
         Set<VendaProd> vendaProd = new LinkedHashSet<>();
@@ -131,10 +131,18 @@ public class VendaController {
 
 //            vendaprodCar.setQtd(carrinho.get(i).getQuantidadeUsu());
             for (int j = 0; j < quantidades.size(); j++) {
-                if (carrinho.get(i).getIdProd() == quantidades.get(j).getId()) {
-                    vendaprodCar.setProduto(carrinho.get(i));
-                    vendaprodCar.setQtd(quantidades.get(j).getQuantidade());
-                    carrinho.get(i).setQuantidadeUsu((int) quantidades.get(j).getQuantidade());
+                
+                if (carrinho.get(i).getEstoque() < quantidades.get(j).getQuantidade()) {
+                    sessao.setAttribute("erroQtd", "O produto " + carrinho.get(i).getNome()
+                            + " possui apenas " + carrinho.get(i).getEstoque() + " em estoque.");
+                    return new ModelAndView("Cart").addObject("prodQtd", prodQtd);
+                } else {
+                    
+                    if (carrinho.get(i).getIdProd() == quantidades.get(j).getId()) {
+                        vendaprodCar.setProduto(carrinho.get(i));
+                        vendaprodCar.setQtd(quantidades.get(j).getQuantidade());
+                        carrinho.get(i).setQuantidadeUsu((int) quantidades.get(j).getQuantidade());
+                    }
                 }
             }
             vendaProd.add(vendaprodCar);
@@ -151,18 +159,17 @@ public class VendaController {
 //                }
 //            }
         }
-        
-        
+
         VendaEndereco ven = new VendaEndereco();
         ven.setCep(cli.getCep());
         ven.setCidade(cli.getCidade());
         ven.setEstado(cli.getEstado());
         ven.setNumero(cli.getNumero());
         ven.setRua(cli.getRua());
-        
+
         venda.setTotalVenda(total);
         sessao.setAttribute("venda", venda);
-        return new ModelAndView("FinalizarCompraEnd").addObject("vendaEndereco",  ven);
+        return new ModelAndView("FinalizarCompraEnd").addObject("vendaEndereco", ven);
     }
 
     @PostMapping("/vendaEnd")
@@ -182,11 +189,7 @@ public class VendaController {
             return new ModelAndView("FinalizarCompraEnd");
         }
         sessao.setAttribute("venda", venda);
-        
-        
-        
-        
-        
+
         return new ModelAndView("FinalizarCompraPag").addObject("VendaPag", new VendaPag());
     }
 }
