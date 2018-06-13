@@ -8,10 +8,11 @@
         <script type="text/javascript">
             function maisQtd(id) {
             document.getElementById(id).value = Number(document.getElementById(id).value) + 1;
-            
+
             var id2 = parseInt(id) + 1;
+
             var atual = parseFloat(document.getElementById(id2).innerText);
-            atual += parseFloat(atual);
+            atual += atual;
             document.getElementById(id2).innerText = atual;
             calculaTotal();
             }
@@ -32,10 +33,10 @@
             {
             total += parseFloat(count[i].innerText);
             }
-            element.innerHTML = 'R$' + total;
+            element.innerHTML = 'Total ' + numberToReal(total);
             }
             }
-            
+
             function calculaTotal(){
             var element = document.getElementById("total");
 
@@ -46,8 +47,13 @@
             {
             total += parseFloat(count[i].innerText);
             }
-            element.innerHTML = 'R$' + total;
+            element.innerHTML = 'Total ' + numberToReal(total);
             }
+            }
+            function numberToReal(numero) {
+            var numero = numero.toFixed(2).split('.');
+            numero[0] = "R$ " + numero[0].split(/(?=(?:...)*$)/).join('.');
+            return numero.join(',');
             }
 
         </script>
@@ -67,7 +73,7 @@
                             <h1 class="" th:text="${c.nome}"><b>Drone Super Hiper Legal Mesmo</b></h1>
                         </div>
                         <div id="div1" class="col-md-4">
-                            <p th:type="number" class="lead prodObj" th:id="${c.idProd} + 1" th:text="${#numbers.formatDecimal(c.precos.preco, 0, 'POINT', 2, 'COMMA')}">Por: R$2.200,00
+                            <p th:type="number" class="lead prodObj" th:id="${c.idProd} + 1" th:text="${c.precos.preco}">Por: R$2.200,00
                                 <br>ou, à vista : R$ 1.980,00
                             </p>
                             <a class="btn-lg btn-danger mb-2" th:href="@{/carrinho/remover/{id}(id=${c.idProd})}" type="submit">Remover do Carrinho</a>
