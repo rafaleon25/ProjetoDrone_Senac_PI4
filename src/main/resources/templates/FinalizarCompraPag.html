@@ -19,54 +19,67 @@
                 </div>
             </div>
         </div>
-        <form th:action="@{/venda/finalizar}" th:object="${VendaPag}" method="post">
-            <div class=" col-md-12">
-                <div class="container">
-                    <div class="row p-3">
-                        <div class="col-md-3">
-                        </div>
-                        <div class=" card col-md-6 ">
-                            <label for="NumeroCartao" >Numero do Cartão: </label>
-                            <input id="NumeroCartao" th:field="*{numeroCartao}" class="form-control" >
-                            <p class="text-danger" th:if="${#fields.hasErrors('numeroCartao')}" th:errors="*{numeroCartao}">numeroCartao incorreto</p>
-                            <label for="nome">Nome do titular:</label>
-                            <input id="nome" class="form-control" th:field="*{nomeTitular}">
-                            <p class="text-danger" th:if="${#fields.hasErrors('nomeTitular')}" th:errors="*{nomeTitular}">nomeTitular incorreto</p>
-                            <label for="validade">Validade:</label>
-                            <input  class="form-control" type="date" id="validade" th:field="*{validadeCartao}">
-                            <p class="text-danger" th:if="${#fields.hasErrors('validadeCartao')}" th:errors="*{validadeCartao}">date incorreto</p>
-                            <label for="segCod">Código de Segurança:</label>
-                            <input id="segCod" class="form-control" th:field="*{codigoSeguranca}">
-                            <p class="text-danger" th:if="${#fields.hasErrors('codigoSeguranca')}" th:errors="*{codigoSeguranca}">codigoSeguranca incorreto</p>
-                            <label for="parcelas" >Parcelas</label>
-                            <input id="parcelas" th:field="*{parcelas}" class="form-control" >
-                            <p class="text-danger" th:if="${#fields.hasErrors('parcelas')}" th:errors="*{parcelas}">parcelas incorreto</p>
-                            <select id="formaPag" class="form-control mt-2 mb-3" th:field="*{formaPagamento}">
-                                <option value="MC">MC</option>
-                                <option value="VI">VI</option>
-                                <option value="HE">HE</option>
-                                <option value="AX">AX</option>
-                            </select>
-                            <p class="text-danger" th:if="${#fields.hasErrors('formaPagamento')}" th:errors="*{formaPagamento}">formaPagamento incorreto</p>
-                        </div>
-                        <div class="col-md-3">
 
-                        </div>
+        <div class="py-5 section-parallax" style=" background-attachment: fixed; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url(https://www.gannett-cdn.com/-mm-/9329f1055adf69016a3902154ad235cdac611c38/c=0-264-5177-3189&r=x1683&c=3200x1680/local/-/media/2015/10/26/USATODAY/USATODAY/635814764285923532-AP-DRONES-AGRICULTURE-75200594.jpg);">
+            <div class="container my-5 p-4">
+                <div class="row mx-auto">
+                    <div class="col-md-12">
+                        <form th:action="@{/venda/finalizar}" th:object="${VendaPag}" method="post">
+                            <div class="container">
+                                <div class="row p-3">
+                                    <div class="col-md-3">
+                                    </div>
+                                    <div class=" card col-md-6 ">
+                                        <label for="NumeroCartao" >Numero do Cartão: </label>
+                                        <input id="NumeroCartao" th:field="*{numeroCartao}" class="form-control" >
+                                        <p class="text-danger" th:if="${#fields.hasErrors('numeroCartao')}" th:errors="*{numeroCartao}">numeroCartao incorreto</p>
+                                        <label for="nome">Nome do titular:</label>
+                                        <input id="nome" class="form-control" th:field="*{nomeTitular}">
+                                        <p class="text-danger" th:if="${#fields.hasErrors('nomeTitular')}" th:errors="*{nomeTitular}">nomeTitular incorreto</p>
+                                        <label for="validade">Validade:</label>
+                                        <input  class="form-control" type="date" id="validade" th:field="*{validadeCartao}">
+                                        <p class="text-danger" th:if="${#fields.hasErrors('validadeCartao')}" th:errors="*{validadeCartao}">date incorreto</p>
+                                        <label for="segCod">Código de Segurança:</label>
+                                        <input id="segCod" class="form-control" th:field="*{codigoSeguranca}">
+                                        <p class="text-danger" th:if="${#fields.hasErrors('codigoSeguranca')}" th:errors="*{codigoSeguranca}">codigoSeguranca incorreto</p>
+                                        <label for="parcelas" >Parcelas</label>
+                                        <select id="parcelas" th:field="*{parcelas}" class="form-control">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="1">5</option>
+                                            <option value="2">6</option>
+                                            <option value="3">7</option>
+                                            <option value="4">8</option>
+                                            <option value="1">9</option>
+                                            <option value="2">10</option>
+                                            <option value="3">11</option>
+                                            <option value="4">12</option>
+                                        </select>
+                                        <p class="text-danger" th:if="${#fields.hasErrors('parcelas')}" th:errors="*{parcelas}">parcelas incorreto</p>
+                                        <label for="formaPag" >Bandeira:</label>
+                                        <select id="formaPag" class="form-control" th:field="*{formaPagamento}">
+                                            <option value="MC">MasterCard</option>
+                                            <option value="VI">Visa</option>
+                                            <option value="HE">Hipercard</option>
+                                            <option value="AX">American Express</option>
+                                        </select>
+                                        <p class="text-danger" th:if="${#fields.hasErrors('formaPagamento')}" th:errors="*{formaPagamento}">formaPagamento incorreto</p>
+                                    </div>
+                                    <div class="col-md-3">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row m-3">
+                                <button class="btn-lg col-md-4 form-control btn-success mx-auto" type="submit">Proximo</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-            <div class="row mb-3 mt-3">
-                <div class="col-md-3" >
-                    <button class="btn-danger  form-control" >Voltar</button>
-                </div>
-                <div class=" col-md-6" >
-
-                </div>
-                <div class="col-md-3" >
-                    <button class="btn-success form-control" type="submit">Finalizar compra</button>
-                </div>
-            </div>
-        </form>
+        </div>
         <div th:replace="master :: footer">
         </div>
     </body>

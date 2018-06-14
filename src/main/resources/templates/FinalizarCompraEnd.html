@@ -5,6 +5,62 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
         <link rel="stylesheet" th:href="@{/theme.css}" type="text/css"/>
+        <script type="text/javascript" >
+            function limpa_formulário_cep() {
+                //Limpa valores do formulário de cep.
+                document.getElementById('rua').value = ("");
+                document.getElementById('bairro').value = ("");
+                document.getElementById('cidade').value = ("");
+                document.getElementById('uf').value = ("");
+            }
+            function meu_callback(conteudo) {
+                if (!("erro" in conteudo)) {
+                    //Atualiza os campos com os valores.
+                    document.getElementById('rua').value = (conteudo.logradouro);
+                    document.getElementById('bairro').value = (conteudo.bairro);
+                    document.getElementById('cidade').value = (conteudo.localidade);
+                    document.getElementById('uf').value = (conteudo.uf);
+                } //end if.
+                else {
+                    //CEP não Encontrado.
+                    limpa_formulário_cep();
+                    alert("CEP não encontrado.");
+                }
+            }
+            function pesquisacep(valor) {
+                //Nova variável "cep" somente com dígitos.
+                var cep = valor.replace(/\D/g, '');
+                //Verifica se campo cep possui valor informado.
+                if (cep != "") {
+                    //Expressão regular para validar o CEP.
+                    var validacep = /^[0-9]{8}$/;
+                    //Valida o formato do CEP.
+                    if (validacep.test(cep)) {
+                        //Preenche os campos com "..." enquanto consulta webservice.
+                        document.getElementById('rua').value = "...";
+                        document.getElementById('bairro').value = "...";
+                        document.getElementById('cidade').value = "...";
+                        document.getElementById('uf').value = "...";
+                        //Cria um elemento javascript.
+                        var script = document.createElement('script');
+                        //Sincroniza com o callback.
+                        script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=meu_callback';
+                        //Insere script no documento e carrega o conteúdo.
+                        document.body.appendChild(script);
+                    } //end if.
+                    else {
+                        //cep é inválido.
+                        limpa_formulário_cep();
+                        alert("Formato de CEP inválido.");
+                    }
+                } //end if.
+                else {
+                    //cep sem valor, limpa formulário.
+                    limpa_formulário_cep();
+                }
+            }
+            ;
+        </script>
     </head>
     <body>
         <div th:replace="Master :: nav">
@@ -19,56 +75,61 @@
                 </div>
             </div>
         </div>
-        <form th:action="@{/venda/vendaEnd}" th:object="${vendaEndereco}" method="post">
-            <div class=" col-md-12">
-                <div class="container">
-                    <div class="row">
-                        <div class=" col-md-3" >
-                        </div>
-                        <div class=" col-md-6 mt-3" >
-                            <div class="card p-1 blockquote">
-                                <p class="mb-0">Dados de entrega:</p>
-                                <label for="End">Endereço:</label>
-                                <input id="End" class=" form-control" th:field="*{rua}">
-                                <p class="text-danger" th:if="${#fields.hasErrors('rua')}" th:errors="*{rua}">rua incorreto</p>
-                                <label for="num">Número:</label>
-                                <input id="num" class="form-control" th:field="*{numero}">
-                                <p class="text-danger" th:if="${#fields.hasErrors('numero')}" th:errors="*{numero}">numero incorreto</p>
-                                <label for="cep">CEP:</label>
-                                <input id="cep" class="form-control" th:field="*{cep}">
-                                <p class="text-danger" th:if="${#fields.hasErrors('cep')}" th:errors="*{cep}">cep incorreto</p>
-                                <label for="cidade">Cidade:</label>
-                                <input id="cidade" class="form-control" th:field="*{cidade}">
-                                <p class="text-danger" th:if="${#fields.hasErrors('cidade')}" th:errors="*{cidade}">cidade incorreto</p>
-                                <label for="estado">Estado:</label>
-                                <input id="estado" class="form-control" th:field="*{estado}">
-                                <p class="text-danger" th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}">estado incorreto</p>
-                                <label for="nome">Nome:</label>
-                                <input id="nome" class="form-control" th:field="*{nome}">
-                                <p class="text-danger" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">nome incorreto</p>
-                                <label for="tel">Telefone:</label>
-                                <input id="tel" class="form-control" th:field="*{celular}">
-                                <p class="text-danger" th:if="${#fields.hasErrors('celular')}" th:errors="*{celular}">celular incorreto</p>
+        <div class="py-5 section-parallax" style=" background-attachment: fixed; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url(https://i.pinimg.com/originals/74/99/d3/7499d36931199baf23250ea3ba0655e2.jpg);">
+            <div class="row ">
+                <div class="col-md-12">
+                    <form th:action="@{/venda/vendaEnd}" th:object="${vendaEndereco}" method="post">
+                        <div class=" col-md-12">
+                            <div class="container">
+                                <div class="row">
+                                    <div class=" col-md-3" >
+                                    </div>
+                                    <div class=" col-md-6 mt-3" >
+                                        <div class="card p-1 pb-3 blockquote">
+                                            <p class="mb-0">Dados de entrega:</p>
+                                            <label>Cep:
+                                                <input class="form-control" th:field="*{cep}" name="cep" type="text" id="cep" value="" size="10" maxlength="9"
+                                                       onblur="pesquisacep(this.value);" /></label>
+                                            <label for="End">Endereço:</label>
+                                            <input id="rua" class=" form-control" th:field="*{rua}">
+                                            <p class="text-danger" th:if="${#fields.hasErrors('rua')}" th:errors="*{rua}">rua incorreto</p>
+                                            <p class="text-danger" th:if="${#fields.hasErrors('cep')}" th:errors="*{cep}">cep incorreto</p>
+                                            <label for="num">Número:</label>
+                                            <input id="num" name="rua" class="form-control" th:field="*{numero}">
+                                            <p class="text-danger" th:if="${#fields.hasErrors('numero')}" th:errors="*{numero}">numero incorreto</p>
+
+                                            <label for="bairro">Bairro:</label>
+                                            <input id="bairro" name="bairro" class="form-control" th:field="*{estado}">
+
+                                            <label for="cidade">Cidade:</label>
+                                            <input id="cidade" name="cidade" class="form-control" th:field="*{cidade}">
+                                            <p class="text-danger" th:if="${#fields.hasErrors('cidade')}" th:errors="*{cidade}">cidade incorreto</p>
+
+                                            <label for="estado">Estado:</label>
+                                            <input id="uf" name="uf" class="form-control" th:field="*{estado}">
+                                            <p class="text-danger" th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}">estado incorreto</p>
+
+                                            <label for="nome">Nome:</label>
+                                            <input id="nome" class="form-control" th:field="*{nome}">
+                                            <p class="text-danger" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">nome incorreto</p>
+
+                                            <label for="tel">Telefone:</label>
+                                            <input id="tel" class="form-control" th:field="*{celular}">
+                                            <p class="text-danger" th:if="${#fields.hasErrors('celular')}" th:errors="*{celular}">celular incorreto</p>
+                                        </div>
+                                    </div>
+                                    <div class=" col-md-3" >
+                                    </div>
+                                </div>
+                                <div class="row m-3">
+                                    <button class="btn-lg col-md-4 form-control btn-success mx-auto" type="submit">Proximo</button>
+                                </div>
                             </div>
                         </div>
-                        <div class=" col-md-3" >
-                        </div>
-                    </div>
-                    <div class="row m-3">
-                        <div class=" col-md-3" >
-                            <button class="form-control btn-danger" type="button">Voltar</button>
-                        </div>
-                        <div class=" col-md-6" >
-
-                        </div>
-                        <div class=" col-md-3" >
-                            <button class="form-control btn-success" type="submit">Proximo</button>
-                        </div>
-                    </div>
-
+                    </form>
                 </div>
             </div>
-        </form>
+        </div>
         <div th:replace="master :: footer">
         </div>
     </body>

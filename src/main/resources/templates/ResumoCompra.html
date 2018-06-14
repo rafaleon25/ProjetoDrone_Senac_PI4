@@ -1,80 +1,80 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-      <link rel="stylesheet" th:href="@{/theme.css}" type="text/css"/>
-   </head>
-   <body>
-      <div th:replace="Master :: nav">
-      </div>
-      <div class="py-3 bg-dark">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12">
-                  <h1 class="display-4">Resumo da Compra
-                  </h1>
-               </div>
-            </div>
-         </div>
-      </div>
-      <div class=" col-md-12">
-         <div class="container">
-            <div class="row">
-               <div class="card-header py-5" style="">
-                  <div class="container">
-                     <div class="row">
-                        <div class="col-md-4" style="">
-                            <div class="blockquote">
-                              <p class="mb-0" th:text="'Codigo da Compra: ' + ${session.cod}"> </p>
-                           </div>
-                            
-                           <div class="blockquote">
-                              <p class="mb-0">Produtos:</p>
-                           </div>
-                            <div class="blockquote" th:each="c : ${session.prodsComp}">
-                              <div class="blockquote-footer" th:text="${c.nome}">Produto1</div>
-                           </div>
-                           
-                        </div>
-                        <div class=" col-md-4">
-                           <div class="blockquote">
-                              <p class="mb-0">Dados de entrega:</p>
-                              <div class="blockquote-footer" th:text="${session.venda.rua}">Endereço:RUA DA PUT* QUE TE PARIU, 2469
-                              </div>
-                              <div class="blockquote-footer" th:text="${session.venda.nome}">Destinatário: Lúcifer da silva
-                              </div>
-                              <div class="blockquote-footer" th:text="${session.usuario.celular}">Telefone de contato : (11)6669-6669
-                              </div>
-                           </div>
-                        </div>
-                        <div class="col-md-4 ">
-                           <div class="blockquote">
-                              <p class="mb-0">Método de pagamento:</p>
-                              <div class="blockquote-footer" th:text="'Forma de pagamento: '+ ${session.venda.formaPagamento}">Cartão de Crédito: Visa</div>
-                              <div class="blockquote-footer" th:text="'Número do cartão: '+ ${session.venda.numero}">Número:123 456 789-123</div>
-                              <div class="blockquote-footer" th:text="'Nome no cartão: '+ ${session.venda.nomeTitular}">Nome impresso: LUCIFER DA SILVA</div>
-                              <div class="blockquote-footer" th:text="'Preço: '+ ${session.venda.totalVenda}">Preço: 616,66<br></div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <div class="py-5">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-3"><a class="btn btn-dark" th:href="@{/home/paginaInicial}">Home</a></div>
-               <div class="col-md-3"></div>
-               <div class="col-md-3"></div>
-               <div class="col-md-3"><a class="btn btn-dark" th:href="@{/produtos/telaProdutos}">Continuar comprando! </a></div>
-            </div>
-         </div>
-      </div>
-     <div th:replace="Master :: footer">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+        <link rel="stylesheet" th:href="@{/theme.css}" type="text/css"/>
+    </head>
+    <body>
+        <div th:replace="Master :: nav">
         </div>
-   </body>
+        <div class="py-3 bg-dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="display-4">Resumo da Compra
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="py-5 section-parallax" style=" background-attachment: fixed; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url(http://backgroundcheckall.com/wp-content/uploads/2017/12/drone-background-6015.jpg)">
+            <div class="container my-5 p-4">
+                <div class="row mx-auto">
+                    <div class=" col-md-12">
+                        <div class="card text-success border-success mt-3 p-1 mx-auto">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-4" style="">
+                                        <div class="blockquote">
+                                            <p class="mb-0" th:text="'Codigo da Compra: ' + ${session.cod}"> </p>
+                                        </div>
+
+                                        <div class="blockquote">
+                                            <p class="mb-0">Produtos:</p>
+                                        </div>
+                                        <div class="blockquote" th:each="c : ${session.prodsComp}">
+                                            <div class="blockquote-footer" th:text="${c.nome}">Produto1</div>
+                                        </div>
+
+                                    </div>
+                                    <div class=" col-md-4">
+                                        <div class="blockquote">
+                                            <p class="mb-0">Dados de entrega:</p>
+                                            <div class="blockquote-footer" th:text="${session.venda.rua}">Endereço:RUA DA PUT* QUE TE PARIU, 2469
+                                            </div>
+                                            <div class="blockquote-footer" th:text="${session.venda.nome}">Destinatário: Lúcifer da silva
+                                            </div>
+                                            <div class="blockquote-footer" th:text="${session.usuario.celular}">Telefone de contato : (11)6669-6669
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 ">
+                                        <div class="blockquote">
+                                            <p class="mb-0">Método de pagamento:</p>
+                                            <div class="blockquote-footer" th:text="'Forma de pagamento: '+ ${session.venda.formaPagamento}">Cartão de Crédito: Visa</div>
+                                            <div class="blockquote-footer" th:text="'Número do cartão: '+ ${session.venda.numero}">Número:123 456 789-123</div>
+                                            <div class="blockquote-footer" th:text="'Nome no cartão: '+ ${session.venda.nomeTitular}">Nome impresso: LUCIFER DA SILVA</div>
+                                            <div class="blockquote-footer" th:text="'Preço: '+ ${session.venda.totalVenda}">Preço: 616,66<br></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mx-auto"><a class="btn btn-lg btn-dark mt-1" th:href="@{/home/paginaInicial}">Home</a></div>
+                <div class="col-md-4"></div>
+                <div class="col-md-4 mx-auto"><a class="btn btn-lg btn-success offset-md-4 mt-1" th:href="@{/produtos/telaProdutos}">Continuar comprando! </a></div>
+            </div>
+        </div>
+        <div th:replace="Master :: footer">
+        </div>
+    </body>
 </html>
