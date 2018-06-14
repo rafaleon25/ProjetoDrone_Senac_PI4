@@ -15,7 +15,7 @@
                 <div class="row align-items-center justify-content-center">
                     <div class="card col-md-4">
                         <article class="card-body">
-                            <a class="float-right btn btn-outline-info" data-toggle="modal" data-target="#modalLogin">Cadastrar-se</a>
+                            <a class="float-right btn btn-outline-info" th:href="@{/cadastrar/cliente/cadastro}">Cadastrar-se</a>
                             <h4 class="card-title mb-4 mt-1">Login</h4>
                             <form th:action="@{/login/logando}" th:object="${login}" method="post">
                                 <div class="form-group" >
@@ -23,7 +23,7 @@
                                     <input name="" th:field="*{user}" class="form-control" placeholder="Email" type="email">
                                 </div> <!-- form-group// -->
                                 <div class="form-group">
-                                    <a class="float-right" href="#">Esqueceu sua senha?</a>
+                                    
                                     <label>Senha</label>
                                     <input class="form-control" th:field="*{senha}" placeholder="******" type="password">
                                 </div> <!-- form-group// --> 
@@ -39,156 +39,7 @@
         </div>
 
 
-        <!-- Modal -->
-        <div class="modal fade lg" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Cadastro</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="card-body text-dark">
-                            <form >
-                                <div class="form-group text-dark form-row">
-                                    <label for="nome" class="col-sm-2 col-form-label">Nome*
-                                        <br></label>
-                                    <div class="col-sm-10">
-                                        <input type="text" name="nome"  id="nome" class="form-control " placeholder="Insira seu nome"> 
-                                        <p class="text-danger" >name incorreto
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="form-group text-dark form-row">
-                                    <label for="sobrenome" class="col-sm-2 col-form-label">Sobrenome*
-                                        <br></label>
-                                    <div class="col-sm-10">
-                                        <input type="text" name="sobrenome"  class="form-control" placeholder="Insira seu sobrenome"> 
-                                        <p class="text-danger" >sobrenome incorreto
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="form-group text-dark  form-row">
-                                    <label for="cpf" class="col-sm-2 col-form-label">CPF*
-                                        <br></label>
-                                    <div class="col-sm-10">
-                                        <input type="text" name="cpf" id="cpf" class="form-control" placeholder="Insira seu CPF"> 
-                                        <p class="text-danger">CPF incorreto
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="form-group text-dark  form-row">
-                                    <label for="dataNascimento" class="col-sm-2 col-form-label">Nascimento*
-                                        <br></label>
-                                    <div class="col-sm-5">
-                                        <input type="date" name="dataNascimento"  id="cpf" class="form-control col-sm-6" placeholder="Insira seu CPF"> 
-                                        <p class="text-danger" >Data de Nascimento incorreta
-                                        </p>
-                                    </div>
-                                    <label class="col-sm-1 col-form-label">Sexo*
-                                        <br></label>
-                                    <div class="col-sm-2 mt-1">
-                                        <label for="male">Masculino</label>
-                                        <input type="radio" name="sexo" id="male" value="m" checked="checked"><br>
-                                        <p class="text-danger" >sexo incorreto
-                                        </p>
-                                    </div>
-                                    <div class="col-sm-2  pt-1">
-                                        <label for="female">Feminino</label>
-                                        <input type="radio" name="sexo"  id="female" value="f"  checked="checked"><br>
-                                        <p class="text-danger" >sexo incorreto
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="form-group text-dark form-row">
-                                    <label for="cep" class="col-sm-2 col-form-label">Cep*
-                                        <br></label>
-                                    <div class="col-sm-10">
-                                        <input type="text" name="cep"  id="cep" class="form-control" placeholder="Insira seu CEP"> 
-                                        <p class="text-danger" >CEP incorreto
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="form-group text-dark form-row">
-                                    <label for="rua" class="col-sm-2 col-form-label">Endereço*
-                                    </label>
-                                    <div class="col-sm-5">
-                                        <input type="text" name="rua" id="rua" class="form-control" placeholder="Insira o Logradouro"> 
-                                        <p class="text-danger" >rua incorreto
-                                        </p>
-                                    </div>
-                                    <label for="numero" class="col-sm-2 col-form-label">Número*
-                                    </label>
-                                    <div class="col-sm-3">
-                                        <input type="number" name="numero"  id="numero" class="form-control" placeholder="Insira o número"> 
-                                        <p class="text-danger" >numero incorreto
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="form-group text-dark  form-row">
-                                    <label for="cidade" class="col-sm-2 col-form-label">Cidade*
-                                        <br></label>
-                                    <div class="col-sm-10">
-                                        <input type="text" name="cidade" id="cidade" class="form-control" placeholder="Insira sua Cidade"> 
-                                        <p class="text-danger" >cidade incorreto
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="form-group text-dark  form-row">
-                                    <label for="estado" class="col-sm-2 col-form-label">Estado*
-                                        <br></label>
-                                    <div class="col-sm-10">
-                                        <input type="text" name="estado" id="estado" class="form-control" placeholder="Insira seu Estado"> 
-                                        <p class="text-danger" >estado incorreto
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="form-group text-dark  form-row">
-                                    <label for="celular" class="col-sm-2 col-form-label">Celular*
-                                        <br></label>
-                                    <div class="col-sm-10">
-                                        <input type="text" name="celular"  id="celular" class="form-control" placeholder="Insira seu Celular"> 
-                                        <p class="text-danger" >celular incorreto
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="form-group text-dark  form-row">
-                                    <label for="email" class="col-sm-2 col-form-label">E-mail*
-                                        <br></label>
-                                    <div class="col-sm-10">
-                                        <input type="email" name="email"  id="email" class="form-control" placeholder="Insira seu e-mail"> 
-                                        <p class="text-danger" >email 
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="form-group form-row">
-                                    <label for="senha" class="col-sm-2 col-form-label">Senha*
-                                    </label>
-                                    <div class="col-sm-4">
-                                        <input type="password" name="senha"  id="senha" class="form-control" placeholder="Insira sua senha"> 
-                                        <p class="text-danger" >senha incorreto
-                                        </p>
-                                    </div>
-                                    <label for="senhaConfirm" class="col-sm-2 col-form-label">Confirmar Senha*
-                                    </label>
-                                    <div class="col-sm-4">
-                                        <input type="password" name="senhaConfirm" id="senhaConfirm" class="form-control" placeholder="Insira sua senha novamente"> 
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-info btn-lg" data-dismiss="modal">Voltar</button>
-                                    <button type="submit"  class="btn btn-dark text-left btn-lg">Cadastrar</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--    Modal      -->  
-    </div>
+        
     <div th:replace="master :: footer">
     </div>
 </body>
