@@ -8,26 +8,29 @@
         <script type="text/javascript">
             function maisQtd(id) {
             var id2 = parseInt(id) + 1;
+            var id4 = parseInt(id) * 4;
             var id = parseInt(id) * 2;
             document.getElementById(id).value = Number(document.getElementById(id).value) + 1;
 
+            var precoOriginal = parseFloat(document.getElementById(id4).innerText);
             var atual = parseFloat(document.getElementById(id2).innerText);
-            atual += atual;
+            atual = atual + precoOriginal;
             document.getElementById(id2).innerText = atual;
             calculaTotal();
             }
 
             function menosQtd(id) {
             var id2 = parseInt(id) + 1;
+            var id4 = parseInt(id) * 4;
             var id = parseInt(id) * 2;
             
             if (document.getElementById(id).value != 1) {
             var qtd = document.getElementById(id).value;
             document.getElementById(id).value = Number(document.getElementById(id).value) - 1;
             
+            var precoOriginal = parseFloat(document.getElementById(id4).innerText);
             var atual = parseFloat(document.getElementById(id2).innerText);
-            var original = atual / qtd;
-            atual = atual - original;
+            atual = atual - precoOriginal;
             document.getElementById(id2).innerText = atual;
             calculaTotal();
             }
@@ -98,7 +101,7 @@
                             <input th:id="${c.idProd} * 2" class="form-control col-sm-2" style="display:inline;" th:field="*{quantidade[__${rowStat.index}__].quantidade}" th:type="number" readonly="true">
                             <button class="btn mais btn-light" type="button" th:onclick="'maisQtd(\'' + ${c.idProd} + '\');'">+</button>
 
-                            <p><span id="teste" style="display: none" th:text="${c.precos.precoFormatado}"></span></p>
+                            <p><span th:id="${c.idProd} * 4" style="display: none" th:text="${c.precos.preco}"></span></p>
                         </div>
                     </div>
                 </div>
