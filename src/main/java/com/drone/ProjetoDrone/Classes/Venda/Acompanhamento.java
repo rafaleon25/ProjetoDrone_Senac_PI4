@@ -16,16 +16,16 @@ import org.hibernate.annotations.Subselect;
  * @author Rafael Rodrigues
  */
 @Entity
-@Subselect("select v.dt_venda data_venda, v.codigo_compra, "
-                        + "p.nome, vp.qtd, v.forma_pagamento, v.status_pedido "
-                        + "from vendas v " +
-                            "inner join venda_prod vp on vp.venda_id = v.vendaid " +
-                            "inner join produtos p on p.produto_id = vp.produto_id " +
-                            "where v.cliente_id = ?1")
+//@Subselect("select v.dt_venda data_venda, v.codigo_compra, "
+//                        + "p.nome, vp.qtd, v.forma_pagamento, v.status_pedido "
+//                        + "from vendas v " +
+//                            "inner join venda_prod vp on vp.venda_id = v.vendaid " +
+//                            "inner join produtos p on p.produto_id = vp.produto_id " +
+//                            "where v.cliente_id = ?1")
 public class Acompanhamento implements Serializable {
 
-    private String nome;
     @Id
+    private String nome;
     private String codigoCompra;
     @Id
     private Date data_venda;
