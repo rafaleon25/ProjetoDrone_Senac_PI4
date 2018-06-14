@@ -6,7 +6,30 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
         <link rel="stylesheet" th:href="@{/theme.css}" type="text/css"/>
         <script type="text/javascript">
-            
+           function filterSelection(c) {
+            var x, i, j, y;
+            x = document.getElementsByClassName("filterDiv");
+            for (i = 0; i < x.length; i++) {
+            x[i].style.display = 'block';
+            }
+            if (c == "Mostrar todos") {
+            for (i = 0; i < x.length; i++) {
+            x[i].style.display = 'block';
+            }
+            } else if (c == "até R$1.499,00"){
+            for (i = 0; i < x.length; i++) {
+            if(parseInt(x[i].getAttribute("value")) > parseInt(1499)){
+            x[i].style.display = 'none';			
+            }
+            }
+            } else if (c == "até R$3.999,00"){
+            for (i = 0; i < x.length; i++) {
+            if(parseInt(x[i].getAttribute("value")) > parseInt(3999)){
+            x[i].style.display = 'none';					
+            }
+            }
+            }	
+            }
         </script>    
     </head>
     <body>
@@ -23,26 +46,26 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-12 py-5">
-            
-                <h3>Filtro por preço</h3>
-            
-                            <button class="btn active mb-1" onclick="Mudarestado('minhaDiv')"> Mostrar todos</button>
-                            <button class="btn mb-1" onclick="filtro1">até R$1.499,00</button>
-                            <button class="btn mb-1" onclick="filtro2">R$1.500,00 até R$3.999,00</button>
-                            <button class="btn mb-1" onclick="filtro3">R$4.000,00 até R$7.999,00</button>
-                            <button class="btn" onclick="filtro4">R$8.000,00 + </button>   
-            
+        <div id="myBtnContainer" class="col-md-12 py-5">
+
+            <h3>Filtro por preço</h3>
+
+            <button class="btn active mb-1" onclick="filterSelection('Mostrar todos')">Mostrar todos</button>
+            <button class="btn mb-1" onclick="filterSelection('até R$1.499,00')">até R$1.499,00</button>
+            <button class="btn mb-1" onclick="filterSelection('até R$3.999,00')">até R$3.999,00</button>
+            <button class="btn mb-1" onclick="filterSelection('até R$7.999,00')">até R$7.999,00</button>
+            <button class="btn" onclick="filterSelection('R$8.000,00 +')">R$8.000,00 +</button>   
+
         </div>
         <!-- thymeleaf do rafa -->
         <div class="container mt-6">
             <div class="row mt-6 ">
                 <div class="col-md-4 mt-6" th:each="p :${session.prods}">
-                    <div id="minhaDiv" class="card mt-2">
+                    <div id="minhaDiv" class="filterDiv card mt-2" th:value="${p.precos.preco}">
                         <img style="max-width: 286px;max-height:200px;" class="card-img-top float " th:src="${p.imagem_url}" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title" th:text="${p.nome}"><br></h5>
-                            <p type="hide" th:text="${p.precos.preco}"></p>
+
                             <h5 class="card-title" th:text="${p.precos.precoFormatado}"><br></h5>
                             <!-- <p class="card-text" style="text-overflow: ellipsis; overflow: hidden; width: 160px; height: 2.4em; white-space: nowrap;" th:text="${p.descricao}"></p> -->
                             <a class="btn btn-lg m-1 btn-success" th:if="${p.estoque} > 0" th:href="@{/produtos/{id}(id=${p.idProd})}">Ver Detalhes</a>
