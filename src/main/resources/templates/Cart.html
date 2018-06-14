@@ -118,7 +118,7 @@
                                     <p th:text="${session.erroQtd}"></p>
 
                                     <button class="btn btn-success m-2" type="submit" th:if="${session.usuario != null}">Comprar</button>
-                                    <a class="btn btn-success m-2" type="submit" th:if="${session.usuario == null}" th:href="@{/login/telaLogin}" >Comprar</a>
+                                    <a class="btn btn-success m-2" type="submit" th:if="${session.usuario == null}" th:href="@{/login/telaLoginCart}" >Comprar</a>
                                 </div>
                             </div>
                         </div>

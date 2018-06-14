@@ -100,12 +100,43 @@ public class LoginController {
             for (int i = 0; i < carrinho.size(); i++) {
                 carrinho.remove(i);
             }
-             session.setAttribute("carrinho", carrinho);
+            session.setAttribute("carrinho", carrinho);
         }
 
-       
         session.invalidate();
         return new ModelAndView("Home");
     }
 
+    @GetMapping("/telaLoginCart")
+    public ModelAndView loginCart() {
+        return new ModelAndView("Login_cart").addObject("login", new Login());
+    }
+
+    @PostMapping("/logandoCart")
+    public ModelAndView logandoCart(@ModelAttribute("login") @Valid Login login, BindingResult bindingResult,
+            RedirectAttributes redirectAttributes, HttpSession session) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+
+        if (bindingResult.hasErrors()) {
+            return new ModelAndView("Login");
+        }
+
+        Cliente cli = new Cliente();
+        try {
+            cli = repository.logar(login.getUser());
+        } catch (Exception e) {
+            return new ModelAndView("Login");
+        }
+
+        if (cli == null) {
+            return new ModelAndView("Login");
+        } else {
+
+            if (cli.getEmail().equals(login.getUser()) && cli.getSenha().equals(criptografia.cripto(login.getSenha()))) {
+                session.setAttribute("usuario", cli);
+                return new ModelAndView("redirect:/carrinho/telaCarrinho");
+            } else {
+                return new ModelAndView("Login");
+            }
+        }
+    }
 }
