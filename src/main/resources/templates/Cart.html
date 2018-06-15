@@ -84,11 +84,13 @@
                         </div>
                         <div class="col-md-5 ">
                             <h1 class="" th:text="${c.nome}"><b>Drone Super Hiper Legal Mesmo</b></h1>
+                            <p th:type="number" class="lead" th:text="'Preço Unitário: ' + ${c.precos.precoFormatado}"></p>
                         </div>
                         <div id="div1" class="col-md-4">
-                            <p th:type="number" class="lead prodObj" th:id="${c.idProd} + 1" th:text="${c.precos.preco}">Por: R$2.200,00
-                                <br>ou, à vista : R$ 1.980,00
-                            </p>
+                            <p th:type="number" style="display:none;" class="lead prodObj" th:id="${c.idProd} + 1" th:text="${c.precos.preco}">Preco usado no js</p>
+                            
+                            
+                            
                             <a class="btn-lg btn-danger mb-2" th:href="@{/carrinho/remover/{id}(id=${c.idProd})}" type="submit">Remover do Carrinho</a>
                             <br>
                             <input type="hidden" th:field="*{quantidade[__${rowStat.index}__].id}" />
