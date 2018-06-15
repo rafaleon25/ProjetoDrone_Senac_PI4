@@ -28,8 +28,32 @@
             x[i].style.display = 'none';					
             }
             }
-            }	
+            }else if (c == "até R$7.999,00"){
+            for (i = 0; i < x.length; i++) {
+            if(parseInt(x[i].getAttribute("value")) > parseInt(7999)){
+            x[i].style.display = 'none';						}}}
+
+            ordenar()
             }
+            
+            function ordenar(){
+            f = document.getElementsByClassName('filho');
+            var divPai = f[0].parentNode;
+            var menor = parseInt(f[0].getAttribute('value'));
+            var menor2 = f[0];
+            var posterior;
+            
+            for (var i = 0; i < f.length; i++){            
+
+            if (parseInt(f[i].getAttribute('value')) < menor){
+            posterior = menor2;
+            menor = parseInt(f[i].getAttribute('value'));
+            menor2 = f[i];
+            
+            divPai.insertBefore(f[i], posterior);
+            }
+            }}
+            
         </script>    
     </head>
     <body>
@@ -59,8 +83,8 @@
         </div>
         <!-- thymeleaf do rafa -->
         <div class="container mt-6">
-            <div class="row mt-6 ">
-                <div class="col-md-4 mt-6" th:each="p :${session.prods}">
+            <div id="pai" class="row mt-6 ">
+                <div class="filho col-md-4 mt-6" th:value="${p.precos.preco}" th:each="p :${session.prods}">
                     <div id="minhaDiv" class="filterDiv card mt-2" th:value="${p.precos.preco}">
                         <img style="max-width: 286px;max-height:200px;" class="card-img-top float " th:src="${p.imagem_url}" alt="Card image cap">
                         <div class="card-body">
